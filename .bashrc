@@ -12,8 +12,8 @@ fi
 
 # copy keys to vm (access restriction via chmod will not work on windows)
 mkdir -p ~/.ssh/vagrant
-sudo cp /vagrant/secret/*.pem ~/.ssh/vagrant
-sudo chmod 400 ~/.ssh/vagrant/*
+cp /vagrant/secret/*.pem ~/.ssh/vagrant
+chmod 400 ~/.ssh/vagrant/*
 
 # ansible
 export ANSIBLE_CONFIG=/vagrant/ansible/ansible.cfg # main configuration
