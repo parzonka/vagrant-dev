@@ -10,6 +10,11 @@ if [ -f "/vagrant/secret/aws_settings.sh" ] ; then
     source "/vagrant/secret/aws_settings.sh" # should contain aws keys and settings
 fi
 
+# copy keys to vm (access restriction via chmod will not work on windows)
+mkdir -p ~/.ssh/vagrant
+sudo cp /vagrant/secret/*.pem ~/.ssh/vagrant
+sudo chmod 400 ~/.ssh/vagrant/*
+
 # ansible
 export ANSIBLE_CONFIG=/vagrant/ansible/ansible.cfg # main configuration
 export ANSIBLE_HOSTS=/etc/ansible/ec2.py # external aws ec2 inventory
