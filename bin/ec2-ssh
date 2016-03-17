@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chmod 400 /vagrant/secret/*.pem
+ssh -i /vagrant/secret/*.pem ubuntu@$1

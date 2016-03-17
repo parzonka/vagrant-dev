@@ -1,0 +1,11 @@
+#!/bin/bash
+
+read -r -p "Are you sure you want to PERMANENTLY terminate the following instance: $1 [Y/n]" response
+case $response in
+    ([yY][eE][sS]|[yY])
+        aws ec2 terminate-instances --instance-id $1 --output text;
+        ;;
+    *)
+
+        ;;
+esac
