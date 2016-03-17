@@ -38,11 +38,11 @@ cat <<EOT >> /home/vagrant/.ssh/config
 Host *
     StrictHostKeyChecking no
 EOT
-# add ssh agent setup with all keys in /vagrant/secret/*.pem for easy ansibling
+# add ssh agent setup for easy ansibling
 cat <<EOT >> .profile
 # enable ssh-agent for ansible
 exec ssh-agent bash -s 10<&0 << EOF
-    ssh-add /vagrant/secret/*.pem &> /dev/null
+    ssh-add /home/vagrant/*.pem &> /dev/null
     exec bash <&10-
 EOF
 EOT

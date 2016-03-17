@@ -11,9 +11,8 @@ if [ -f "/vagrant/secret/aws_settings.sh" ] ; then
 fi
 
 # copy keys to vm (access restriction via chmod will not work on windows)
-mkdir -p ~/.ssh/vagrant
-cp /vagrant/secret/*.pem ~/.ssh/vagrant
-chmod 400 ~/.ssh/vagrant/*
+cp /vagrant/secret/*.pem ~/
+chmod 600 *.pem
 
 # ansible
 export ANSIBLE_CONFIG=/vagrant/ansible/ansible.cfg # main configuration
