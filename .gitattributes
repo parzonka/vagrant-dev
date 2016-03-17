@@ -1,0 +1,8 @@
+#enforce unix line endings
+* text eol=lf
+
+#binary files should not be modified
+*.png binary
+*.jpg binary
+*.pdf binary
+
