@@ -40,7 +40,6 @@ Host *
 EOT
 # add ssh agent setup with all keys in /vagrant/secret/*.pem for easy ansibling
 cat <<EOT >> .profile
-export PATH=$PATH:/vagrant/aws
 # enable ssh-agent for ansible
 exec ssh-agent bash -s 10<&0 << EOF
     ssh-add /vagrant/secret/*.pem &> /dev/null
