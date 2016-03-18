@@ -16,9 +16,9 @@ Cachier caches downloads, vbguest installs the host's VirtualBox Guest Additions
 
 ### Settings and Keys
 
-Place credentials and default region in `aws_settings.sh` in the `secret` directory next to the Vagrantfile. Keys also go there:
+Place credentials and default region in `.bashrc` in the `secret` directory next to the Vagrantfile. Keys also go there:
 
-	secret/aws_settings.sh
+	secret/.bashrc
 	secret/*.pem
 	...
 	Vagrantfile
