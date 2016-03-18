@@ -46,3 +46,6 @@ exec ssh-agent bash -s 10<&0 << EOF
     exec bash <&10-
 EOF
 EOT
+
+# corkscrew for proxy piercing
+sudo apt-get install corkscrew -y
