@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTANCES=$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output text | tr '\n' ' ')
+INSTANCES=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running,pending,stopped,stopping" --query 'Reservations[*].Instances[*].InstanceId' --output text | tr '\n' ' ')
 
 read -r -p "Are you sure you want to PERMANENTLY terminate the following instances: $INSTANCES? [Y/n]" response
 case $response in

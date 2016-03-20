@@ -1,3 +1,15 @@
 #!/bin/bash
 
-aws ec2 describe-instances --query 'Reservations[*].Instances[*].{InstanceId: InstanceId, State: State.Name,  Public_IP: PublicIpAddress, Private_IP: PrivateIpAddress, VPC: VpcId, Zone: Placement.AvailabilityZone, LaunchTime: LaunchTime}' --output table
+aws ec2 describe-instances --query "Reservations[*].Instances[*].{\
+InstanceId: InstanceId, \
+InstanceType: InstanceType,\
+State: State.Name, \
+Public_IP: PublicIpAddress, \
+Private_IP: PrivateIpAddress, \
+LaunchTime: LaunchTime, \
+Name: Tags[?Key=='name'].Value  | [0]\
+}" --output table
+
+# unused:
+# Zone: Placement.AvailabilityZone, \
+# VPC: VpcId, \

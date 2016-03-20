@@ -1,9 +1,10 @@
 #!/bin/bash
 
-read -r -p "Are you sure you want to PERMANENTLY terminate the following instance: $1 [Y/n]" response
+INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:name,Values=$1" --query 'Reservations[0].Instances[0].InstanceId' --output text)
+read -r -p "Are you sure you want to PERMANENTLY terminate the following named instance: $1 ($INSTANCE_ID) [Y/n]" response
 case $response in
     ([yY][eE][sS]|[yY])
-        aws ec2 terminate-instances --instance-id $1 --output text;
+        aws ec2 terminate-instances --instance-id $INSTANCE_ID --output text;
         ;;
     *)
 

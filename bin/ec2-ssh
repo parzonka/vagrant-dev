@@ -1,3 +1,4 @@
 #!/bin/bash
 
-ssh -i ~/*.pem ubuntu@$1
+INSTANCE_IP=$(aws ec2 describe-instances --filters "Name=tag:name,Values=$1" --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+ssh -i ~/*.pem ubuntu@$INSTANCE_IP

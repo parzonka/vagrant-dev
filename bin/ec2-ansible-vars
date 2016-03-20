@@ -1,0 +1,4 @@
+#!/bin/bash
+# display ec2 ansible vars for ec2
+
+ansible ec2 -m debug -a var=hostvars[inventory_hostname]

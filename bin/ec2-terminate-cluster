@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# terminates all instances tagged with name=$1
+
+INSTANCE_IDS=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running,pending,stopped,stopping" "Name=tag:cluster,Values=$1" --query 'Reservations[*].Instances[*].InstanceId' --output text | tr '\n' ' ') 
+read -r -p "Are you sure you want to PERMANENTLY terminate the $1 cluster ($INSTANCE_IDS) [Y/n]" response
+case $response in
+    ([yY][eE][sS]|[yY])
+        aws ec2 terminate-instances --instance-id $INSTANCE_IDS --output text;
+        ;;
+    *)
+
+        ;;
+esac
